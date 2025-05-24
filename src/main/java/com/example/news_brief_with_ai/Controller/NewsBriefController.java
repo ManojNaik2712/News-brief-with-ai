@@ -22,10 +22,4 @@ public class NewsBriefController {
     public NewsSummaryResponse generalBrief(){
         return newsBriefService.generateGeneralNewsBrief();
     }
-
-//    @GetMapping(value = "/general-brief/render",produces = MediaType.TEXT_HTML_VALUE)
-//    public NewsSummaryResponse generalBrief(){
-//        return newsBriefService.generateGeneralNewsBrief();
-//    }
-
 }

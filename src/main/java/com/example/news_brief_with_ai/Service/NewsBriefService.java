@@ -1,6 +1,7 @@
 package com.example.news_brief_with_ai.Service;
 
 import com.example.news_brief_with_ai.Client.NewsApiClient;
+import com.example.news_brief_with_ai.DTO.NewsApiResponse;
 import com.example.news_brief_with_ai.DTO.NewsSummaryResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,12 @@ public class NewsBriefService {
     }
 
     public NewsSummaryResponse generateGeneralNewsBrief() {
-        final newsApiResponse newsApiResponse=newsApiClient.getTopHeadlines();
+        final NewsApiResponse newsApiResponse=newsApiClient.getTopHeadlines();
+
+        log.info("newsApiReponse: {}",newsApiResponse);
+        return NewsSummaryResponse.builder()
+                .summary("blah blah blah")
+                .creadtedAt(java.time.LocalDateTime.now())
+                .build();
     }
 }
