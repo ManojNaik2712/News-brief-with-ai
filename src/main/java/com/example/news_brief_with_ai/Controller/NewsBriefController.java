@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/v1/news-brief")
 public class NewsBriefController {
+
     private final NewsBriefService newsBriefService;
 
     @Autowired
@@ -18,8 +19,9 @@ public class NewsBriefController {
         this.newsBriefService = newsBriefService;
     }
 
-    @GetMapping(value = "/general-brief",produces = MediaType.APPLICATION_JSON_VALUE)
-    public NewsSummaryResponse generalBrief(){
+    //Getting brief explanation of news
+    @GetMapping(value = "/general-brief", produces = MediaType.APPLICATION_JSON_VALUE)
+    public NewsSummaryResponse generalBrief() {
         return newsBriefService.generateGeneralNewsBrief();
     }
 }

@@ -21,28 +21,29 @@ public class NewsApiClient {
     private String country;
 
     @Value("${news.api.url.content.top.headlines}")
-    private String topHeadlineUrl;
+    private String topHeadlinesUrl;
 
-
+    //Getting top headlines summmary
     public NewsApiResponse getTopHeadlines() {
         final RestTemplate restTemplate = new RestTemplate();
 
         final String url = getTopHeadlinesUrl();
 
+        //Sending request to external news api
         final NewsApiResponse result = restTemplate.getForObject(url, NewsApiResponse.class);
 
-        log.info("result: {}",result);
         return result;
     }
 
+    //Creating url for external api call
     private String getTopHeadlinesUrl() {
-        final String baseUrl = this.url + this.topHeadlineUrl;
+        final String baseUrl = this.url + this.topHeadlinesUrl;
 
         final String urlWithParams = UriComponentsBuilder.fromUriString(baseUrl)
                 .queryParam("country", country)
                 .queryParam("apiKey", apiKey)
                 .toUriString();
-        log.info("url: {}", urlWithParams);
+
         return urlWithParams;
     }
 }
